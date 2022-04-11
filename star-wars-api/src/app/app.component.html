@@ -1,0 +1,12 @@
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand nav-title" (click)="onBack()" [style.cursor]="'pointer'">Star Wars Universe</a>
+    <form class="d-flex">
+      <input class="form-control me-5" type="search" placeholder="Pesquisar Personagens" aria-label="Search"
+      #searchingField (input)="setSearching(searchingField.value)" [style.width]="'288px'">
+    </form>
+  </div>
+</nav>
+<div class="router">
+  <router-outlet></router-outlet>
+</div>

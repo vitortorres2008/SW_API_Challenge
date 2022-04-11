@@ -1,0 +1,88 @@
+div.titulo {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  height: 1px;
+  background-color: #000000;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+div.titulo span {
+  background-color: white;
+  position: relative;
+  top: -0.7em;
+  padding: 0 10px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+img {
+  width: 40vh;
+  height: 55vh;
+  border-radius: 0.9em;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: row;
+  gap: 120px;
+}
+
+.desc {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 3px;
+}
+
+.date-rel {
+  display: flex;
+  margin-top: 140px;
+  gap: 40%;
+}
+
+.prod {
+  display: flex;
+  margin-top: 10px;
+  gap: 52%;
+}
+
+.card-title {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 16px;
+  color: #505050;
+  margin-left: 6px;
+}
+
+.text-bold {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 16px;
+  color: #505050;
+  margin-left: 6px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+}
+button {
+  float: right;
+  width: 100px;
+  margin-bottom: 20px;
+}

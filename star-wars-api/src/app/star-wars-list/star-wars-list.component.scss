@@ -1,0 +1,49 @@
+.card-text {
+  margin-left: 6px;
+}
+
+.card-title {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 16px;
+  color: #505050;
+}
+
+.text-bold {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 16px;
+  color: #505050;
+}
+
+div.titulo {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  height: 1px;
+  background-color: #000000;
+  text-align: center;
+}
+
+div.titulo span {
+  background-color: white;
+  position: relative;
+  top: -0.7em;
+  padding: 0 10px;
+}
+
+.div-card {
+  display: flex;
+  margin-bottom: 100px;
+}
+
+.card-img {
+  height: 100%;
+  width: 100%;
+}

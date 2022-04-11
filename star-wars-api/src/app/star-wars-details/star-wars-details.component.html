@@ -1,0 +1,67 @@
+<div class="titulo">
+    <span>
+        {{dataMovie?.title}}
+    </span>
+</div>
+<div class="detail-content">
+    <div class="description" [style.width]="'430px'">
+        <p class="desc">Descrição</p>
+        <p>{{ dataMovie?.opening_crawl }}</p>
+        <div class="date-rel">
+            <p class="desc">Data de Lançamento</p>
+            {{ dataMovie?.release_date | date }}
+        </div>
+        <div class="prod">
+            <div>
+                <p class="desc">Diretor</p>
+                {{ dataMovie?.director }}
+            </div>
+            <div>
+                <p class="desc">Produtor</p>
+                {{ dataMovie?.producer }}
+            </div>
+        </div>
+    </div>
+    <div class="img">
+        <img src="{{ movieImg }}">
+    </div>
+</div>
+<div class="titulo">
+    <span>
+        Characters of the movie
+    </span>
+</div>
+<div class="div-card" [style.margin-bottom]="'20px'">
+    <carousel [arrowsTheme]="'dark'" [arrowsOutside]="true" [cellsToShow]="3" [width]="1000" [height]="160"
+        [loop]="true">
+        <div class="card carousel-cell" *ngFor="let character of dataCharacters">
+            <h5 class="card-body" [style.background-color]="'#FFC700'">
+                {{ character.name }}
+            </h5>
+            <p class="card-text card-title">Data de Nascimento</p>
+            <p class="card-text text-bold">{{character.birth_year}}</p>
+            <p class="card-text card-title">Altura</p>
+            <p class="card-text text-bold">{{character.height}}Cm</p>
+        </div>
+    </carousel>
+</div>
+<div class="titulo">
+    <span>
+        Write a Review
+    </span>
+</div>
+<form [formGroup]="form" class="row g-3">
+    <div class="col-md-6">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+    </div>
+    <div class="col-md-6">
+        <label for="emailTxt" class="form-label">Your Email</label>
+        <input type="email" class="form-control" id="emailTxt" email formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label for="reviewTxt" class="form-label">Review</label>
+        <textarea class="form-control" id="reviewTxt" rows="3" formControlName="review"></textarea>
+    </div>
+</form>
+<button type="button" class="btn btn-success" (click)="onPublish()">Publish</button>

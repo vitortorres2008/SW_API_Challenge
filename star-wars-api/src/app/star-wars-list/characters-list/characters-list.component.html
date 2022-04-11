@@ -1,0 +1,19 @@
+<div class="titulo" [style.margin]="'50px'">
+    <span>
+        Characters
+    </span>
+</div>
+<div class="div-card">
+    <carousel [arrowsTheme]="'dark'" [arrowsOutside]="true" [cellsToShow]="3" [width]="1000" [height]="162"
+        [loop]="true">
+        <div class="card carousel-cell" *ngFor="let character of characters | filter: term">
+            <h5 class="card-body" [style.background-color]="'#FFC700'">
+                {{ character.name }}
+            </h5>
+            <p class="card-text card-title">Data de Nascimento</p>
+            <p class="card-text text-bold">{{character.birth_year}}</p>
+            <p class="card-text card-title">Altura</p>
+            <p class="card-text text-bold">{{character.height}}Cm</p>
+        </div>
+    </carousel>
+</div>

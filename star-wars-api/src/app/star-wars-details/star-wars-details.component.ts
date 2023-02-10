@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
+import { CharactersModel, SelectedMovieModel } from 'src/assets/model/star-wars.model';
 import { StarWarsListService } from '../star-wars-list/star-wars-list.service';
 
 @Component({
@@ -13,14 +14,14 @@ export class StarWarsDetailsComponent implements OnInit {
   id!: number;
   form!: FormGroup;
   movieImg!: string;
-  dataMovie!: any;
-  dataCharacters: any[] = [];
+  dataMovie!: SelectedMovieModel;
+  dataCharacters!: CharactersModel[];
 
   constructor(
     private activeRoute: ActivatedRoute,
     private starWarsListService: StarWarsListService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.id = this.activeRoute.snapshot.params['id'];
@@ -32,61 +33,34 @@ export class StarWarsDetailsComponent implements OnInit {
   private getMovie(id: number) {
     this.starWarsListService
       .getMovie(id)
-      .pipe(
-        tap((result) => {
-          this.dataMovie = result;
-          this.getCharactersMovie();
-        })
-      )
-      .subscribe();
+      .subscribe((result) => {
+        this.dataMovie = result;
+        this.getCharactersMovie();
+      });
   }
 
   private getImg(id: number) {
-    if (id == 1) {
-      this.movieImg = '../../assets/img/episode_4.jpg';
-    }
-    if (id == 2) {
-      this.movieImg = '../../assets/img/episode_5.jpg';
-    }
-    if (id == 3) {
-      this.movieImg = '../../assets/img/episode_6.jpg';
-    }
-    if (id == 4) {
-      this.movieImg = '../../assets/img/episode_1.jpg';
-    }
-    if (id == 5) {
-      this.movieImg = '../../assets/img/episode_2.jpg';
-    }
-    if (id == 6) {
-      this.movieImg = '../../assets/img/episode_3.jpg';
-    }
+    this.movieImg = `../../assets/img/episode_${id}.jpg`;
   }
 
   private createForm() {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       review: ['', Validators.required],
     });
   }
 
   public onPublish() {
-    const model = {
-      name: this.form.get('name')?.value,
-      email: this.form.get('email')?.value,
-      review: this.form.get('review')?.value,
-    };
-    localStorage.setItem('form review', JSON.stringify(model));
-    this.starWarsListService.createReview(model).subscribe();
+    const value = this.form.getRawValue();
+    localStorage.setItem('form review', JSON.stringify(value));
+    this.starWarsListService.createReview(value).subscribe();
   }
 
   private getCharactersMovie(): void {
-    this.dataMovie?.characters.forEach((url: any) => {
-      this.starWarsListService
-        .getCharactersMovie(url)
-        .subscribe((result: any) => {
-          this.dataCharacters.push(result);
-        });
+    const charactersRequest = this.dataMovie.characters.map((url: string) => this.starWarsListService.getCharactersMovie(url));
+    forkJoin(charactersRequest).subscribe((res) => {
+      this.dataCharacters = res;
     });
   }
 }

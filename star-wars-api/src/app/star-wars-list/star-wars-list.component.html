@@ -1,29 +1,31 @@
-<div *ngIf="movies" [style.margin-top]="'100px'">
-    <div class="titulo" [style.margin]="'50px'">
-        <span>
-            Movies
-        </span>
-    </div>
-    <div class="div-card">
-        <carousel [arrowsTheme]="'dark'" [arrowsOutside]="true" [cellsToShow]="3" [width]="1000" [height]="600" [loop]="true">
-            <div class="card carousel-cell" *ngFor="let movie of movies | filter: term" (click)="sendToRoute(movie.episode_id)" [style.cursor]="'pointer'">
-                <img src="{{ movie.episode_img }}" class="card-img-top card-img">
-                <h5 class="card-body" [style.background-color]="'#FFC700'">
-                    {{ movie.title }}
-                </h5>
-                <p class="card-text card-title">Data de Lançamento</p>
-                <p class="card-text text-bold">{{movie.release_date | date}}</p>
-                <p class="card-text card-title">Diretor</p>
-                <p class="card-text text-bold" [style.margin-bottom]="'5px'">{{movie.director}}</p>
-            </div>
-        </carousel>
-    </div>
-    <div class="characters">
-        <app-characters-list></app-characters-list>
-    </div>
+<div *ngIf="movies" class="movies-list">
+  <div class="titulo">
+    <span>
+      Movies
+    </span>
+  </div>
+  <div class="div-card">
+    <carousel [arrowsTheme]="'dark'" [arrowsOutside]="true" [cellsToShow]="3" [width]="1000" [height]="600"
+      [loop]="true">
+      <div class="card carousel-cell" *ngFor="let movie of movies | filter: term"
+        (click)="sendToRoute(movie.episode_id)" [style.cursor]="'pointer'">
+        <img src="{{ movie.episode_img }}" class="card-img-top card-img">
+        <h5 class="card-body">
+          {{ movie.title }}
+        </h5>
+        <p class="card-text card-title">Data de Lançamento</p>
+        <p class="card-text text-bold">{{ movie.release_date | date }}</p>
+        <p class="card-text card-title">Diretor</p>
+        <p class="card-text text-bold" [style.margin-bottom]="'5px'">{{ movie.director }}</p>
+      </div>
+    </carousel>
+  </div>
+  <div class="characters">
+    <app-characters-list></app-characters-list>
+  </div>
 </div>
 <div class="d-flex justify-content-center" *ngIf="!movies" [style.margin-top]="'300px'">
-    <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>

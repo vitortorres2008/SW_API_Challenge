@@ -10,7 +10,7 @@ import { SearchingService } from '../app/searching.service';
 export class AppComponent {
   title = 'star-wars-api';
 
-  constructor(private router: Router, private searchingService: SearchingService) {}
+  constructor(private router: Router, private searchingService: SearchingService) { }
 
   onBack() {
     localStorage.clear();

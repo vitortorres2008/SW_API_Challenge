@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SearchingService } from 'src/app/searching.service';
+import { CharactersModel } from 'src/assets/model/star-wars.model';
 import { StarWarsListService } from '../star-wars-list.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { StarWarsListService } from '../star-wars-list.service';
 })
 export class CharactersListComponent implements OnInit, OnDestroy {
 
-  characters: any;
+  characters!: CharactersModel[];
   subsCharacters!: Subscription;
   searchTerm!: string;
   term!: string;
@@ -35,6 +36,6 @@ export class CharactersListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.subsCharacters.unsubscribe();
+    this.subsCharacters.unsubscribe();
   }
 }

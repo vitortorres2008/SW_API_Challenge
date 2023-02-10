@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 export class SearchingService {
   private searchText = new Subject();
 
-  constructor() {}
+  constructor() { }
 
   public setSeaching(value: string) {
     this.searchText.next(value);

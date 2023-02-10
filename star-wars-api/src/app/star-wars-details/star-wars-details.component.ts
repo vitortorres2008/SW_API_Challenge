@@ -51,7 +51,7 @@ export class StarWarsDetailsComponent implements OnInit {
     });
   }
 
-  public onPublish() {
+  public onPublishReview() {
     const value = this.form.getRawValue();
     localStorage.setItem('form review', JSON.stringify(value));
     this.starWarsListService.createReview(value).subscribe();
@@ -59,7 +59,7 @@ export class StarWarsDetailsComponent implements OnInit {
 
   private getCharactersMovie(): void {
     const charactersRequest = this.dataMovie.characters.map((url: string) => this.starWarsListService.getCharactersMovie(url));
-    forkJoin(charactersRequest).subscribe((res) => {
+    forkJoin(charactersRequest).subscribe((res: CharactersModel[]) => {
       this.dataCharacters = res;
     });
   }

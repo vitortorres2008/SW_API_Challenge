@@ -16,7 +16,8 @@ export class CharactersListComponent implements OnInit, OnDestroy {
   searchTerm!: string;
   term!: string;
 
-  constructor(private starWarsListService: StarWarsListService, private searchingService: SearchingService) { }
+  constructor(private starWarsListService: StarWarsListService,
+    private searchingService: SearchingService) { }
 
   ngOnInit(): void {
     this.subsCharacters = this.onRefresh();

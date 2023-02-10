@@ -1,24 +1,24 @@
 <div class="titulo">
   <span>
-    {{ dataMovie?.title }}
+    {{ dataMovie.title }}
   </span>
 </div>
 <div class="detail-content">
   <div class="description" [style.width]="'430px'">
     <p class="desc">Descrição</p>
-    <p>{{ dataMovie?.opening_crawl }}</p>
+    <p>{{ dataMovie.opening_crawl }}</p>
     <div class="date-rel">
       <p class="desc">Data de Lançamento</p>
-      {{ dataMovie?.release_date | date }}
+      {{ dataMovie.release_date | date }}
     </div>
     <div class="prod">
       <div>
         <p class="desc">Diretor</p>
-        {{ dataMovie?.director }}
+        {{ dataMovie.director }}
       </div>
       <div>
         <p class="desc">Produtor</p>
-        {{ dataMovie?.producer }}
+        {{ dataMovie.producer }}
       </div>
     </div>
   </div>
@@ -37,9 +37,9 @@
       <h5 class="card-body" [style.background-color]="'#FFC700'">
         {{ character.name }}
       </h5>
-      <p class="card-text card-title">Data de Nascimento</p>
+      <p class="card-text card-title">Date of birth</p>
       <p class="card-text text-bold">{{ character.birth_year }}</p>
-      <p class="card-text card-title">Altura</p>
+      <p class="card-text card-title">Height</p>
       <p class="card-text text-bold">{{ character.height }}Cm</p>
     </div>
   </carousel>
@@ -63,4 +63,4 @@
     <textarea class="form-control" id="reviewTxt" rows="3" formControlName="review"></textarea>
   </div>
 </form>
-<button type="button" class="btn btn-success" (click)="onPublish()" [disabled]="form.invalid">Publish</button>
+<button type="button" class="btn btn-success" (click)="onPublishReview()" [disabled]="form.invalid">Publish</button>

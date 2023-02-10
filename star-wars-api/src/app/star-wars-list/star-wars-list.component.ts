@@ -31,8 +31,8 @@ export class StarWarsListComponent implements OnInit, OnDestroy {
 
   onRefresh() {
     return this.starWarsListService.getMovies()
-      .pipe(map((resp: any) => {
-        resp.results.map((item: any) => {
+      .pipe(map((resp) => {
+        resp.results.map((item) => {
           item.episode_img = `../../assets/img/episode_${item.episode_id}.jpg`;
           return item;
         });
